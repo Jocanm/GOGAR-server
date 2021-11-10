@@ -51,5 +51,5 @@ const userSchema = new Schema<User>({
 })
 
 //Como tercer parametro podemos agregarle el nombre de la colección donde queremos que se creen o se editen nuestros usuarios
-export const userModel = model("User",userSchema)
+export const UserModel = model("User",userSchema)
 
