@@ -6,19 +6,19 @@ const main = async() =>{
 
     await conexionBD();
 
-    await userModel.create({
-        correo:"jorge@gmail.com",
-        identificacion:"1423442",
-        nombre:"Jorge",
-        apellido:"Perez",
-        rol:Enum_Rol.estudiante
-    })
-    .then((user)=>{
-        console.log("Usuario Creado: ", user)
-    })
-    .catch((err)=>{
-        console.log("Error: ",err)
-    })
+
+    //CRUD EJEMPLO
+
+    //CREAR UN USUARIO
+
+    // const usuario = await userModel.create({
+    //     correo:"david@gmail.com",
+    //     identificacion:"1423233442",
+    //     nombre:"David",
+    //     apellido:"Sarmiento",
+    //     rol:Enum_Rol.estudiante
+    // })
+    // console.log("Usuario creado: ", usuario);
 
     // OBTENER TODOS LOS USUARIOS
 
@@ -28,10 +28,28 @@ const main = async() =>{
 
 
     //OBTENER USUARIOS ESPECIFICOS
+    //Esto nos traera todos los que cumplan con el filtro, .findOne podemos traer uno solo
+    
     await userModel.find({
         correo:'amjose09@gmail.com'
     })
     .then(u=>console.log("Usuario filtrado: ",u))
+
+    //ACTUALIZAR
+
+    await userModel.findOneAndUpdate(
+        {correo:"david@gmail.com"},
+        {
+            nombre:"David123",
+            apellido:"Perez"
+        }
+    ).then(u=>console.log("Usuario actualizado",u))
+
+    //ELIMINAR
+
+    await userModel.findOneAndDelete(
+        {correo:"amjose09@gmail.com"}
+    ).then(u=>console.log("usuario eliminado",u))
 
 }
 
