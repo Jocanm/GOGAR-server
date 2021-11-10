@@ -1,24 +1,26 @@
 import conexionBD from "./db/db";
 import { userModel } from "./models/user";
+import { Enum_Rol } from './models/enums';
 
 const main = async() =>{
 
     await conexionBD();
 
-    // await userModel.create({
-    //     correo:"osorio@gmail.com",
-    //     identificacion:"657234",
-    //     nombre:"Jonathan",
-    //     apellido:"Garrido"
-    // })
-    // .then((user)=>{
-    //     console.log("Usuario Creado: ", user)
-    // })
-    // .catch((err)=>{
-    //     console.log("Error: ",err)
-    // })
+    await userModel.create({
+        correo:"jorge@gmail.com",
+        identificacion:"1423442",
+        nombre:"Jorge",
+        apellido:"Perez",
+        rol:Enum_Rol.estudiante
+    })
+    .then((user)=>{
+        console.log("Usuario Creado: ", user)
+    })
+    .catch((err)=>{
+        console.log("Error: ",err)
+    })
 
-    //OBTENER TODOS LOS USUARIOS
+    // OBTENER TODOS LOS USUARIOS
 
     await userModel.find()
     .then((u)=>console.log("Todos los usuarios: ", u))
