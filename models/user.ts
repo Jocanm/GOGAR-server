@@ -17,6 +17,11 @@ const userSchema = new Schema({
     apellido:{
         type:String,
         required:true
+    },
+    rol:{
+        type:String,
+        required:true,
+        enum:["Estudiante","Lider","Administrador"]
     }
 })
 
