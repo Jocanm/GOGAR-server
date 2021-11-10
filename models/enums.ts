@@ -3,3 +3,9 @@ export enum Enum_Rol{
     lider = "Lider",
     administrador = "Administrador"
 }
+
+export enum Enum_estadoUsuario{
+    pendiente = "Pendiente",
+    autorizado = "Autorizado",
+    no_autorizado = "No autorizado"
+}

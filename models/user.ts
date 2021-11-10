@@ -1,5 +1,5 @@
 import {Schema,model} from 'mongoose'
-import { Enum_Rol } from './enums';
+import { Enum_Rol, Enum_estadoUsuario } from './enums';
 
 interface User{
     correo:string;
@@ -7,6 +7,7 @@ interface User{
     nombre:string;
     apellido:string;
     rol:Enum_Rol;
+    estado:Enum_estadoUsuario
 }
 
 //De esta forma garantizamos que todos los tipos que esten dentro del schema de usuarios cumplan con los tipos de datos requeridos
@@ -14,7 +15,15 @@ interface User{
 const userSchema = new Schema<User>({
     correo:{
         type:String,
-        required:true
+        required:true,
+        unique:true,
+        validate:{
+            validator: (email)=>{
+                if(email.includes("@") && email.includes(".")) return true
+                else return false
+            },
+            message:"El correo ingresado es invalido"
+        },
     },
     identificacion:{
         type:String,
@@ -33,8 +42,14 @@ const userSchema = new Schema<User>({
         type:String,
         required:true,
         enum:Enum_Rol
+    },
+    estado:{
+        type:String,
+        enum:Enum_estadoUsuario,
+        default:Enum_estadoUsuario.pendiente
     }
 })
 
+//Como tercer parametro podemos agregarle el nombre de la colección donde queremos que se creen o se editen nuestros usuarios
 export const userModel = model("User",userSchema)
 

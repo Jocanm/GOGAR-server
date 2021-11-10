@@ -11,14 +11,14 @@ const main = async() =>{
 
     //CREAR UN USUARIO
 
-    // const usuario = await userModel.create({
-    //     correo:"david@gmail.com",
-    //     identificacion:"1423233442",
-    //     nombre:"David",
-    //     apellido:"Sarmiento",
-    //     rol:Enum_Rol.estudiante
-    // })
-    // console.log("Usuario creado: ", usuario);
+    const usuario = await userModel.create({
+        correo:"pedrogmail.com",
+        identificacion:"14255442",
+        nombre:"pedro",
+        apellido:"Sarmiento",
+        rol:Enum_Rol.estudiante,
+    })
+    console.log("Usuario creado: ", usuario);
 
     // OBTENER TODOS LOS USUARIOS
 
@@ -29,7 +29,7 @@ const main = async() =>{
 
     //OBTENER USUARIOS ESPECIFICOS
     //Esto nos traera todos los que cumplan con el filtro, .findOne podemos traer uno solo
-    
+
     await userModel.find({
         correo:'amjose09@gmail.com'
     })
