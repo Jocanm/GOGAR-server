@@ -24,6 +24,8 @@ const main = async() =>{
     .then((u)=>console.log("Todos los usuarios: ", u))
     .catch(e=>console.error("Error obteniendo usuarios: ", e))
 
+
+    //OBTENER USUARIOS ESPECIFICOS
     await userModel.find({
         correo:'amjose09@gmail.com'
     })
