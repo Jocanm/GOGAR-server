@@ -1,4 +1,5 @@
 import conexionBD from "./db/db";
+import { ObjectId, Schema } from "mongoose";
 import { UserModel } from "./models/user";
 import { Enum_Rol, Enum_tipoObjetivo, Enum_estadoProyecto } from './models/enums';
 import { ProjectModel } from "./models/project";
@@ -8,50 +9,79 @@ const main = async() =>{
 
     await conexionBD();
 
-    //CRUD PROYECTOS
+    const proyecto = await ProjectModel.create({
+        nombre:"Proyecto7",
+        fechaInicio: new Date().toLocaleDateString(),
+        fechaFin: new Date("2022/11/11"),
+        presupuesto:120000,
+        lider:"618bffb52b01123891aa36b7"
+    })
 
-    //Creamos un un objetivo para añadirlo a un proyecto
+    console.log("Nuevo proyecto: ",proyecto)
 
-    // const objetivo = await ObjetiveModel.create({
-    //     descripcion:"Objetivo especifico",
-    //     tipo: Enum_tipoObjetivo.especifico
-    // })
+    const objetivoGeneral = await ObjetiveModel.create({
+        descripcion:"Este es un objetivo general",
+        tipo:Enum_tipoObjetivo.general,
+        proyecto:"618d8be4c5cf5715131b901a"
+    })
+
+
+    //Obtener los avances de un proyecto especifico
+
+    const misObjetivos = await ObjetiveModel.find({ proyectos:"618d8be4c5cf5715131b901a"})
+    console.log(misObjetivos)
     
-    //CREATE
 
-    // ProjectModel.create({
-    //     nombre:"Proyecto5",
-    //     presupuesto:120,
-    //     fechaInicio: new Date().toLocaleDateString(),
-    //     fechaFin: new Date("2022/11/10"),
-    //     lider:"618bffb52b01123891aa36b7",
-    // })
+    console.log("Objetivo general creado: ",objetivoGeneral.populate("proyecto"))
 
-    const proyecto3 = await ProjectModel.find({nombre:"Proyecto3"}).populate("objetivos").populate("lider")
+    // const objetivoGeneral = await ObjetiveModel.find({descripcion:"Este es un objetivo general"}).populate("proyecto")
 
-    console.log("Proyecto con los objetivos en relacion fuerte: ", JSON.stringify(proyecto3));
-    
+    console.log("Objetivo: ",objetivoGeneral)
 
-    //Debido a que el id de lider es un objectId, cuando usamos el metodo populate y le pasamos como parametro el campo que queremos traer, al traer la información del proyectom, tambien nos traera toda la información del lider en este caso.
-
-    //READ
-    const proyecto = await ProjectModel.find({nombre:"Proyecto2"}).populate("lider")
-
-    console.log("Proyecto: ",proyecto)
-
-    //UPDATE
-
-    await ProjectModel.findOneAndUpdate(
-        {nombre:"Proyecto5"},
-        {
-            estado:Enum_estadoProyecto.activo
-        }
-    )
-    .then(u=>console.log("Projecto actualizado: ",u))
-    .catch(e=>console.error("Error: ",e))
 }
 
 main()
+// //CRUD PROYECTOS
+
+// //Creamos un un objetivo para añadirlo a un proyecto
+
+// // const objetivo = await ObjetiveModel.create({
+// //     descripcion:"Objetivo especifico",
+// //     tipo: Enum_tipoObjetivo.especifico
+// // })
+
+// //CREATE
+
+// // ProjectModel.create({
+// //     nombre:"Proyecto5",
+// //     presupuesto:120,
+// //     fechaInicio: new Date().toLocaleDateString(),
+// //     fechaFin: new Date("2022/11/10"),
+// //     lider:"618bffb52b01123891aa36b7",
+// // })
+
+// const proyecto3 = await ProjectModel.find({nombre:"Proyecto3"}).populate("objetivos").populate("lider")
+
+// console.log("Proyecto con los objetivos en relacion fuerte: ", JSON.stringify(proyecto3));
+
+
+// //Debido a que el id de lider es un objectId, cuando usamos el metodo populate y le pasamos como parametro el campo que queremos traer, al traer la información del proyectom, tambien nos traera toda la información del lider en este caso.
+
+// //READ
+// const proyecto = await ProjectModel.find({nombre:"Proyecto2"}).populate("lider")
+
+// console.log("Proyecto: ",proyecto)
+
+// //UPDATE
+
+// await ProjectModel.findOneAndUpdate(
+//     {nombre:"Proyecto5"},
+//     {
+//         estado:Enum_estadoProyecto.activo
+//     }
+// )
+// .then(u=>console.log("Projecto actualizado: ",u))
+// .catch(e=>console.error("Error: ",e))
 
 // //CRUD USUARIO EJEMPLO
 

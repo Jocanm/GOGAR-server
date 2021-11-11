@@ -18,10 +18,10 @@ const objetivoSchema = new Schema<Objetivo>({
         enum:Enum_tipoObjetivo,
         required:true
     },
-    // proyecto:{
-    //     type:Schema.Types.ObjectId,
-    //     ref:ProjectModel
-    // }
+    proyecto:{
+        type:Schema.Types.ObjectId,
+        ref:ProjectModel
+    }
 })
 
 export const ObjetiveModel = model("Objetive",objetivoSchema,"objetivos")
