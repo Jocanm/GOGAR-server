@@ -1,5 +1,6 @@
 import {Schema,model} from 'mongoose'
 import { Enum_estadoProyecto, Enum_faseProyecto } from './enums'
+import { ObjetiveModel } from './objetivo'
 import { UserModel } from './user'
 
 interface Projecto{
@@ -10,6 +11,7 @@ interface Projecto{
     estado:Enum_estadoProyecto,
     fase:Enum_faseProyecto,
     lider:Schema.Types.ObjectId
+    objetivos:[Schema.Types.ObjectId]
 }
 
 
@@ -44,7 +46,13 @@ const projectSchema = new Schema<Projecto>({
         type:Schema.Types.ObjectId,
         required:true,
         ref:UserModel
-    }
+    },
+    objetivos:[
+        {
+            type:Schema.Types.ObjectId,
+            ref:ObjetiveModel
+        }
+    ]
 })
 
 export const ProjectModel = model("Proyecto",projectSchema,"proyectos")

@@ -21,3 +21,8 @@ export enum Enum_faseProyecto{
     terminado = "Terminado",
     nula = ""
 }
+
+export enum Enum_tipoObjetivo{
+    general = "General",
+    especifico = "Especifico"
+}
