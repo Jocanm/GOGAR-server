@@ -38,6 +38,8 @@ const main = async() =>{
 
     console.log("Objetivo: ",objetivoGeneral)
 
+    await ObjetiveModel.find({id:"618d8cf05f2f8257f51c3019"}).populate("proyecto").then(e=>console.log("objetivo: ",e))
+
 }
 
 main()
