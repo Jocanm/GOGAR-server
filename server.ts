@@ -1,6 +1,6 @@
 import conexionBD from "./db/db";
 import { UserModel } from "./models/user";
-import { Enum_Rol, Enum_tipoObjetivo } from './models/enums';
+import { Enum_Rol, Enum_tipoObjetivo, Enum_estadoProyecto } from './models/enums';
 import { ProjectModel } from "./models/project";
 import { ObjetiveModel } from "./models/objetivo";
 
@@ -19,13 +19,13 @@ const main = async() =>{
     
     //CREATE
 
-    ProjectModel.create({
-        nombre:"Proyecto5",
-        presupuesto:120,
-        fechaInicio: new Date().toLocaleDateString(),
-        fechaFin: new Date("2022/11/10"),
-        lider:"618bffb52b01123891aa36b7",
-    })
+    // ProjectModel.create({
+    //     nombre:"Proyecto5",
+    //     presupuesto:120,
+    //     fechaInicio: new Date().toLocaleDateString(),
+    //     fechaFin: new Date("2022/11/10"),
+    //     lider:"618bffb52b01123891aa36b7",
+    // })
 
     const proyecto3 = await ProjectModel.find({nombre:"Proyecto3"}).populate("objetivos").populate("lider")
 
@@ -38,6 +38,17 @@ const main = async() =>{
     const proyecto = await ProjectModel.find({nombre:"Proyecto2"}).populate("lider")
 
     console.log("Proyecto: ",proyecto)
+
+    //UPDATE
+
+    await ProjectModel.findOneAndUpdate(
+        {nombre:"Proyecto5"},
+        {
+            estado:Enum_estadoProyecto.activo
+        }
+    )
+    .then(u=>console.log("Projecto actualizado: ",u))
+    .catch(e=>console.error("Error: ",e))
 }
 
 main()

@@ -13,7 +13,7 @@ interface User{
 //De esta forma garantizamos que todos los tipos que esten dentro del schema de usuarios cumplan con los tipos de datos requeridos
 
 const userSchema = new Schema<User>({
-    correo:{
+    correo:{ 
         type:String,
         required:true,
         unique:true,
