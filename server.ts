@@ -6,6 +6,8 @@ import { ObjetiveModel } from "./models/objetivo";
 const main = async() =>{
 
     await conexionBD();
+
+    // PROBANDO CRUD EN AVANCES E INSCRIPCIONES
     
 }
 
