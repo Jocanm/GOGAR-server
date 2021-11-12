@@ -26,3 +26,8 @@ export enum Enum_tipoObjetivo{
     general = "General",
     especifico = "Especifico"
 }
+
+export enum Enum_estadoInscripcion{
+    aceptada = "Aceptada",
+    rechazada = "Rechazada"
+}

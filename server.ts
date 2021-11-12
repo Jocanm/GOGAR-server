@@ -1,6 +1,4 @@
 import conexionBD from "./db/db";
-import { ObjectId, Schema } from "mongoose";
-import { UserModel } from "./models/user";
 import { Enum_Rol, Enum_tipoObjetivo, Enum_estadoProyecto } from './models/enums';
 import { ProjectModel } from "./models/project";
 import { ObjetiveModel } from "./models/objetivo";
@@ -8,41 +6,44 @@ import { ObjetiveModel } from "./models/objetivo";
 const main = async() =>{
 
     await conexionBD();
-
-    const proyecto = await ProjectModel.create({
-        nombre:"Proyecto7",
-        fechaInicio: new Date().toLocaleDateString(),
-        fechaFin: new Date("2022/11/11"),
-        presupuesto:120000,
-        lider:"618bffb52b01123891aa36b7"
-    })
-
-    console.log("Nuevo proyecto: ",proyecto)
-
-    const objetivoGeneral = await ObjetiveModel.create({
-        descripcion:"Este es un objetivo general",
-        tipo:Enum_tipoObjetivo.general,
-        proyecto:"618d8be4c5cf5715131b901a"
-    })
-
-
-    //Obtener los avances de un proyecto especifico
-
-    const misObjetivos = await ObjetiveModel.find({ proyectos:"618d8be4c5cf5715131b901a"})
-    console.log(misObjetivos)
     
-
-    console.log("Objetivo general creado: ",objetivoGeneral.populate("proyecto"))
-
-    // const objetivoGeneral = await ObjetiveModel.find({descripcion:"Este es un objetivo general"}).populate("proyecto")
-
-    console.log("Objetivo: ",objetivoGeneral)
-
-    await ObjetiveModel.find({id:"618d8cf05f2f8257f51c3019"}).populate("proyecto").then(e=>console.log("objetivo: ",e))
-
 }
 
 main()
+
+    // const proyecto = await ProjectModel.create({
+    //     nombre:"Proyecto7",
+    //     fechaInicio: new Date().toLocaleDateString(),
+    //     fechaFin: new Date("2022/11/11"),
+    //     presupuesto:120000,
+    //     lider:"618bffb52b01123891aa36b7"
+    // })
+
+    // console.log("Nuevo proyecto: ",proyecto)
+
+    // const objetivoGeneral = await ObjetiveModel.create({
+    //     descripcion:"Este es un objetivo general",
+    //     tipo:Enum_tipoObjetivo.general,
+    //     proyecto:"618d8be4c5cf5715131b901a"
+    // })
+
+
+    // //Obtener los avances de un proyecto especifico
+
+    // const misObjetivos = await ObjetiveModel.find({ proyectos:"618d8be4c5cf5715131b901a"})
+    // console.log(misObjetivos)
+    
+
+    // console.log("Objetivo general creado: ",objetivoGeneral.populate("proyecto"))
+
+    // // const objetivoGeneral = await ObjetiveModel.find({descripcion:"Este es un objetivo general"}).populate("proyecto")
+
+    // console.log("Objetivo: ",objetivoGeneral)
+
+    // await ObjetiveModel.find({id:"618d8cf05f2f8257f51c3019"}).populate("proyecto").then(e=>console.log("objetivo: ",e))
+
+
+    
 // //CRUD PROYECTOS
 
 // //Creamos un un objetivo para añadirlo a un proyecto
