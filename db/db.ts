@@ -2,7 +2,7 @@ import { connect } from "mongoose";
 
 const conexionBD = async() => {
 
-    return await connect("mongodb+srv://admin:admin@gogardatabase.nfqou.mongodb.net/GogarDataBase?retryWrites=true&w=majority")
+    return await connect(process.env.DATABASE_URL)
     .then(()=>{
         console.log("Conexion exitosa");
     })
