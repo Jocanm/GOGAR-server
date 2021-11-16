@@ -11,3 +11,17 @@ interface Proyecto{
     fase:Enum_faseProyecto,
     lider:Schema.Types.ObjectId,
 }
+
+const proyectoSchema = new Schema<Proyecto>({
+    nombre:{
+        type:String,
+        required:true
+    },
+    presupuesto:{
+        type:Number,
+        required:true
+    },
+    fechaInicio:{
+        type:Date,
+    }
+})
