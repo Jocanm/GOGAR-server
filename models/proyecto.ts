@@ -23,5 +23,27 @@ const proyectoSchema = new Schema<Proyecto>({
     },
     fechaInicio:{
         type:Date,
+        required:true
+    },
+    fechaFin:{
+        type:Date,
+        required:true
+    },
+    estado:{
+        type:String,
+        enum:Enum_estadoProyecto,
+        default:Enum_estadoProyecto.inactivo
+    },
+    fase:{
+        type:String,
+        enum:Enum_faseProyecto,
+        default:Enum_faseProyecto.nula
+    },
+    lider:{
+        type:Schema.Types.ObjectId,
+        required:true,
+        // ref:""
     }
 })
+
+export const ProyectoModel = model('Proyecto',proyectoSchema,"proyectos");
