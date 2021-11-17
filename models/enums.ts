@@ -1,25 +1,25 @@
+export enum Enum_estadoUsuario{
+    PENDIENTE="PENDIENTE",
+    AUTORIZADO="AUTORIZADO",
+    NO_AUTORIZADO="NO_AUTORIZADO"
+}
 export enum Enum_Rol{
-    estudiante = "Estudiante",
-    lider = "Lider",
-    administrador = "Administrador"
+    ESTUDIANTE = "ESTUDIANTE",
+    LIDER = "LIDER",
+    ADMINISTRADOR = "ADMINISTRADOR"
 }
 
-export enum Enum_estadoUsuario{
-    pendiente = "Pendiente",
-    autorizado = "Autorizado",
-    no_autorizado = "No autorizado"
-}
 
 export enum Enum_estadoProyecto{
-    activo = "Activo",
-    inactivo = "Inactivo"
+    ACTIVO = "ACTIVO",
+    INACTIVO = "INACTIVO"
 }
 
 export enum Enum_faseProyecto{
-    iniciado = "Iniciado",
-    desarrollo = "En desarrollo", 
-    terminado = "Terminado",
-    nula = ""
+    INICIADO = "INICIADO",
+    DESARROLLO = "DESARROLLO", 
+    TERMINADO = "TERMINADO",
+    NULA = ""
 }
 
 export enum Enum_tipoObjetivo{
