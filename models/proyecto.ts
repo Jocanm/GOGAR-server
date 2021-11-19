@@ -32,12 +32,12 @@ const proyectoSchema = new Schema<Proyecto>({
     estado:{
         type:String,
         enum:Enum_estadoProyecto,
-        default:Enum_estadoProyecto.inactivo
+        default:Enum_estadoProyecto.INACTIVO
     },
     fase:{
         type:String,
         enum:Enum_faseProyecto,
-        default:Enum_faseProyecto.nula
+        default:Enum_faseProyecto.NULA
     },
     lider:{
         type:Schema.Types.ObjectId,

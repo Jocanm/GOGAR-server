@@ -1,13 +1,13 @@
 export enum Enum_estadoProyecto {
-  activo = "Activo",
-  inactivo = "Inactivo"
+  ACTIVO = "ACTIVO",
+  INACTIVO = "INACTIVO"
 }
 
 export enum Enum_faseProyecto {
-  iniciado = "Iniciado",
-  desarollo = "Desarrollo",
-  terminado = "Terminado",
-  nula = ""
+  INCIADO = "INCIADO",
+  DESARROLLO = "DESARROLLO",
+  TERMINADO = "TERMINADO",
+  NULA = ""
 }
 enum Enum_Rol {
   ESTUDIANTE = 'ESTUDIANTE',
@@ -20,17 +20,16 @@ enum Enum_EstadoUsuario {
   AUTORIZADO = 'AUTORIZADO',
   NO_AUTORIZADO = 'NO_AUTORIZADO',
 }
-
+export enum Enum_EstadoInscripcion {
+  ACEPTADA = "ACEPTADA",
+  RECHAZADO = "RECHAZADO",
+}
 
 export {
   Enum_Rol,
   Enum_EstadoUsuario,
 };
 
-export enum Enum_EstadoInscripcion {
-  aceptada = "Aceptada",
-  rechazada = "Rechazada",
-}
 
 
 
