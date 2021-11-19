@@ -27,3 +27,9 @@ export {
   Enum_EstadoUsuario,
 };
 
+export enum Enum_EstadoInscripcion{
+    aceptada = "Aceptada",
+    rechazada = "Rechazada",
+}
+
+ 
