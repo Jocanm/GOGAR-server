@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 export enum Enum_estadoProyecto {
   activo = "Activo",
   inactivo = "Inactivo"
@@ -33,3 +34,48 @@ export enum Enum_EstadoInscripcion{
 }
 
  
+=======
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export enum Enum_tipoObjetivo{
+    general ='General',
+    especifico='Especifico'
+}
+>>>>>>> daniel_objetivos
