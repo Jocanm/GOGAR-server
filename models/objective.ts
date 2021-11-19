@@ -1,6 +1,6 @@
 import {Schema,model} from 'mongoose';
 import { Enum_tipoObjetivo } from "./enum";
-
+import {ProyectoModel} from "./proyecto";
 
 interface Objetivo{
     _id: string,
@@ -21,7 +21,7 @@ const objetivoSchema = new Schema<Objetivo>({
     },
     proyecto: {
         type: Schema.Types.ObjectId,
-        //ref: ProjectModel,
+        ref: ProyectoModel
     },
 
 
