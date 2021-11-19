@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 export enum Enum_estadoProyecto {
   activo = "Activo",
   inactivo = "Inactivo"
@@ -28,13 +27,11 @@ export {
   Enum_EstadoUsuario,
 };
 
-export enum Enum_EstadoInscripcion{
-    aceptada = "Aceptada",
-    rechazada = "Rechazada",
+export enum Enum_EstadoInscripcion {
+  aceptada = "Aceptada",
+  rechazada = "Rechazada",
 }
 
- 
-=======
 
 
 
@@ -74,8 +71,8 @@ export enum Enum_EstadoInscripcion{
 
 
 
-export enum Enum_tipoObjetivo{
-    general ='General',
-    especifico='Especifico'
+
+export enum Enum_tipoObjetivo {
+  general = 'General',
+  especifico = 'Especifico'
 }
->>>>>>> daniel_objetivos
