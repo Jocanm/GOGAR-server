@@ -14,16 +14,13 @@ interface Inscripcion {
 const InscriptionSchema = new Schema<Inscripcion>({
   estado: {
     type: String,
-    enum: Enum_EstadoInscripcion,
-    required: true,
+    enum: Enum_EstadoInscripcion
   },
   fechaIngreso: {
     type: Date,
-    required: true,
   },
   fechaEgreso: {
     type: Date,
-    required: true,
   },
   proyecto: {
     type: Schema.Types.ObjectId,
