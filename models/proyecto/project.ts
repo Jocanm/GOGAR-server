@@ -55,4 +55,10 @@ const projectSchema = new Schema<Projecto>({
     // ]
 })
 
+projectSchema.virtual("avances",{
+    ref: "Avance",
+    localField:"_id",
+    foreignField:"proyecto"
+})
+
 export const ProjectModel = model("Proyecto",projectSchema,"proyectos")
