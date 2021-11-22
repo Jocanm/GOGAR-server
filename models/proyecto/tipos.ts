@@ -13,6 +13,7 @@ export const tiposProyecto = gql`
         lider:Usuario!
         avances:[Avance]
         objetivos:[Objetivo]
+        inscripciones:[Inscripcion]
     }
 
     type Query{

@@ -22,15 +22,18 @@ const inscripcionSchema = new Schema<Inscripcion>({
     estado:{
         type:String,
         enum:Enum_estadoInscripcion,
+        default:Enum_estadoInscripcion.PENDIENTE
     },
     proyecto:{
         type:Schema.Types.ObjectId,
-        ref:ProjectModel
+        ref:ProjectModel,
+        required:true
     },
     estudiante:{
         type:Schema.Types.ObjectId,
-        ref:UserModel
+        ref:UserModel,
+        required:true
     }
 })
 
-const InscripcionModel = model("Inscripcion",inscripcionSchema,"inscripciones")
+export const InscripcionModel = model("Inscripcion",inscripcionSchema,"inscripciones")

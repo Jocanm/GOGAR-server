@@ -11,6 +11,7 @@ export const tiposUsuario = gql`
         correo:String!
         estado:Enum_estadoUsuario!
         rol:Enum_Rol!
+        inscripciones:[Inscripcion]
     }
 
     type Query{

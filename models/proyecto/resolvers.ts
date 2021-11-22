@@ -4,10 +4,10 @@ export const resolversProyecto = {
 
     Query:{
         Proyectos: async (parent,args) => {
-            return await ProjectModel.find().populate("lider").populate("avances").populate("objetivos")
+            return await ProjectModel.find().populate("lider").populate("avances").populate("objetivos").populate("inscripciones")
         },
         Proyecto: async (parent,args) => {
-            const proyecto =  await ProjectModel.findOne({_id:args._id}).populate("lider").populate("avances").populate("objetivos")
+            const proyecto =  await ProjectModel.findOne({_id:args._id}).populate("lider").populate("avances").populate("objetivos").populate("inscripciones")
             return proyecto
         }
     },

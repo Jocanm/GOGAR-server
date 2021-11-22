@@ -48,6 +48,17 @@ const userSchema = new Schema<User>({
         enum:Enum_estadoUsuario,
         default:Enum_estadoUsuario.PENDIENTE
     }
+    },
+    {
+        toJSON: { virtuals: true },
+        toObject: { virtuals: true }
+    }
+)
+
+userSchema.virtual("inscripciones", {
+    ref: "Inscripcion",
+    localField: "_id",
+    foreignField: "estudiante"
 })
 
 //Como tercer parametro podemos agregarle el nombre de la colección donde queremos que se creen o se editen nuestros usuarios

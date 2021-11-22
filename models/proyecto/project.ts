@@ -72,6 +72,12 @@ projectSchema.virtual("objetivos",{
     foreignField:"proyecto"
 })
 
+projectSchema.virtual("inscripciones",{
+    ref:"Inscripcion",
+    localField:"_id",
+    foreignField:"proyecto"
+})
+
 
 
 export const ProjectModel = model("Proyecto", projectSchema, "proyectos")
