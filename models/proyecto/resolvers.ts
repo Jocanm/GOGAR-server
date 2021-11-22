@@ -4,7 +4,7 @@ export const resolversProyecto = {
 
     Query:{
         Proyectos: async (parent,args) => {
-            return await ProjectModel.find().populate("lider")
+            return await ProjectModel.find().populate("lider").populate("avances")
         },
         Proyecto: async (parent,args) => {
             return await ProjectModel.findOne({_id:args._id}).populate("lider")
