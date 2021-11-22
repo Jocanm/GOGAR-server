@@ -4,10 +4,11 @@ export const resolversProyecto = {
 
     Query:{
         Proyectos: async (parent,args) => {
-            return await ProjectModel.find().populate("lider").populate("avances")
+            return await ProjectModel.find().populate("lider").populate("avances").populate("objetivos")
         },
         Proyecto: async (parent,args) => {
-            return await ProjectModel.findOne({_id:args._id}).populate("lider")
+            const proyecto =  await ProjectModel.findOne({_id:args._id}).populate("lider").populate("avances").populate("objetivos")
+            return proyecto
         }
     },
     Mutation:{

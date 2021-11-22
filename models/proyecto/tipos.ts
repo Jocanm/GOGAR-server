@@ -12,6 +12,7 @@ export const tiposProyecto = gql`
         fase:Enum_faseProyecto!
         lider:Usuario!
         avances:[Avance]
+        objetivos:[Objetivo]
     }
 
     type Query{

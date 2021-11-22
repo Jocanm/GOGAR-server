@@ -25,5 +25,10 @@ export const tiposEnums = gql`
         TERMINADO 
         NULA 
     }
+
+    enum Enum_tipoObjetivo{
+    GENERAL
+    ESPECIFICO
+    }
 `;
 

@@ -19,15 +19,15 @@ export enum Enum_faseProyecto{
     INICIADO = "INICIADO",
     DESARROLLO = "DESARROLLO", 
     TERMINADO = "TERMINADO",
-    NULA = ""
+    NULA = "NULA"
 }
 
 export enum Enum_tipoObjetivo{
-    general = "General",
-    especifico = "Especifico"
+    GENERAL = "GENERAL",
+    ESPECIFICO = "ESPECIFICO"
 }
 
 export enum Enum_estadoInscripcion{
-    aceptada = "Aceptada",
-    rechazada = "Rechazada"
+    ACEPTADA = "ACEPTADA",
+    RECHAZADA = "RECHAZADA"
 }
