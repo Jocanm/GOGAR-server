@@ -11,7 +11,7 @@ const main = async () => {
 
     // PROBANDO LOS POPULATE VIRTUALES
 
-    const proyecto = await UserModel.find().populate("inscripciones")
+    const proyecto = await UserModel.find()
     console.log(proyecto)
 
     // CREAR INSCRIPCION A UN PROYECTO SIENDO ESTUDIANTE HU_020
