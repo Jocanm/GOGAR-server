@@ -7,7 +7,7 @@ export enum Enum_faseProyecto {
   INCIADO = "INCIADO",
   DESARROLLO = "DESARROLLO",
   TERMINADO = "TERMINADO",
-  NULA = ""
+  NULA = "NULA"
 }
 enum Enum_Rol {
   ESTUDIANTE = 'ESTUDIANTE',

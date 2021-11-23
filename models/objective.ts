@@ -21,7 +21,8 @@ const objetivoSchema = new Schema<Objetivo>({
     },
     proyecto: {
         type: Schema.Types.ObjectId,
-        ref: ProyectoModel
+        ref: ProyectoModel,
+        required:true
     },
 
 
