@@ -14,7 +14,8 @@ interface Inscripcion {
 const InscriptionSchema = new Schema<Inscripcion>({
   estado: {
     type: String,
-    enum: Enum_EstadoInscripcion
+    enum: Enum_EstadoInscripcion,
+    default:Enum_EstadoInscripcion.PENDIENTE
   },
   fechaIngreso: {
     type: Date,

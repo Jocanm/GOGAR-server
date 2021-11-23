@@ -23,6 +23,12 @@ enum Enum_EstadoUsuario {
 export enum Enum_EstadoInscripcion {
   ACEPTADA = "ACEPTADA",
   RECHAZADO = "RECHAZADO",
+  PENDIENTE = "PENDIENTE"
+}
+
+export enum Enum_tipoObjetivo {
+  GENERAL = 'GENERAL',
+  ESPECIFICO = 'ESPECIFICO'
 }
 
 export {
@@ -71,7 +77,4 @@ export {
 
 
 
-export enum Enum_tipoObjetivo {
-  general = 'General',
-  especifico = 'Especifico'
-}
+
