@@ -1,36 +1,41 @@
 import conexionBD from "./db/db";
-import { Enum_EstadoUsuario, Enum_Rol, Enum_tipoObjetivo, Enum_estadoProyecto, Enum_faseProyecto,Enum_EstadoInscripcion } from "./models/enum";
-import { ObjetivoModel } from "./models/objective";
-import { ProyectoModel } from "./models/proyecto";
-import { UserModel } from "./models/usuario";
-import { InscripcionModel } from './models/inscripcion'
-import { AvancesModel } from "./models/avances";
+import { Enum_EstadoUsuario, Enum_Rol, Enum_tipoObjetivo, Enum_estadoProyecto, Enum_faseProyecto,Enum_EstadoInscripcion } from "./models/enums/enum";
+import { ObjetivoModel } from "./models/objetivo/objective";
+import { ProyectoModel } from "./models/proyecto/proyecto";
+import { UserModel } from "./models/usuario/usuario";
+import { InscripcionModel } from './models/inscripcion/inscripcion'
+import { AvancesModel } from "./models/avance/avances";
 
 const main = async () => {
     await conexionBD();
 
+    // PROBANDO LOS POPULATE VIRTUALES
+
+    const proyecto = await UserModel.find().populate("inscripciones")
+    console.log(proyecto)
+
     // CREAR INSCRIPCION A UN PROYECTO SIENDO ESTUDIANTE HU_020
 
-    const inscr = await InscripcionModel.create({
-        proyecto: "61986bf903d3bcc34f73101a",
-        estudiante: "6198691df9dae4f11c04c656",
-    })
+    // const inscr = await InscripcionModel.create({
+    //     proyecto: "61986bf903d3bcc34f73101a",
+    //     estudiante: "6198691df9dae4f11c04c656",
+    // })
 
     // COMO ESTUDIANTE AGREGAR UN AVANCE A UN PROYECTO HU_022
 
-    const avance = await AvancesModel.create({
-        fecha:new Date("2021-11-21"),
-        descripcion:"Descripcion avance",
-        proyecto:"61986bf903d3bcc34f73101a",
-        creadoPor:"6198691df9dae4f11c04c656"
-    })
+    // const avance = await AvancesModel.create({
+    //     fecha:new Date("2021-11-21"),
+    //     descripcion:"Descripcion avance",
+    //     proyecto:"61986bf903d3bcc34f73101a",
+    //     creadoPor:"6198691df9dae4f11c04c656"
+    // })
 
     // COMO ESTUDIANTE ACTUALIZAR LA DESCRIPCION DE UN AVANCE  HU_023
 
-    const avanceActualizado = await AvancesModel.findOneAndUpdate(
-        {_id:avance._id},
-        {descripcion:"Descripcion de avance actualizada"}
-    )
+    // const avanceActualizado = await AvancesModel.findOneAndUpdate(
+    //     {_id:avance._id},
+    //     {descripcion:"Descripcion de avance actualizada"}
+    // )
 
     // VER A QUE PROYECTOS ESTOY INSCRITO USANDO 
 
