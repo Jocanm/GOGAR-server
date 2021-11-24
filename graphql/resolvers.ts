@@ -1,3 +1,3 @@
-//AQUI VAN LAS IMPORTACIONES DE TODOS LOS RESOLVERS DE LOS ESQUEMAS QUE DEBE CREAR CADA INTEGRANTE DEL GRUPO
+import { resolversProyecto } from "../models/proyecto/resolvers";
 
-export const resolvers = [];
+export const resolvers = [resolversProyecto];
