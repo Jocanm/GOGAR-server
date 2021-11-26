@@ -7,7 +7,8 @@ interface User{
     nombre:string;
     apellido:string;
     rol:Enum_Rol;
-    estado:Enum_estadoUsuario
+    estado:Enum_estadoUsuario;
+    password:string;
 }
 
 //De esta forma garantizamos que todos los tipos que esten dentro del schema de usuarios cumplan con los tipos de datos requeridos
@@ -24,6 +25,10 @@ const userSchema = new Schema<User>({
             },
             message:"El correo ingresado es invalido"
         },
+    },
+    password:{
+        type:String,
+        required:true
     },
     identificacion:{
         type:String,
