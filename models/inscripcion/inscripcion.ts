@@ -15,13 +15,16 @@ const InscriptionSchema = new Schema<Inscripcion>({
   estado: {
     type: String,
     enum: Enum_EstadoInscripcion,
-    default:Enum_EstadoInscripcion.PENDIENTE
+    default:Enum_EstadoInscripcion.PENDIENTE,
+    required: true,
   },
   fechaIngreso: {
     type: Date,
+    required: false,
   },
   fechaEgreso: {
     type: Date,
+    required: false,
   },
   proyecto: {
     type: Schema.Types.ObjectId,

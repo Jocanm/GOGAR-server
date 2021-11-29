@@ -1,17 +1,16 @@
 import { InscripcionModel } from "./inscripcion"
 
-const resolverInscripciones = {
+export const resolverInscripciones = {
     Query:{
         Inscripciones: async(parent, args) =>{
-            const inscripciones = await InscripcionModel.find():
+            const inscripciones = await InscripcionModel.find();
             return inscripciones;
         },
     },
     Mutation:{
         crearInscripcion: async (parents, args) =>{
             const inscripcionCreada = await InscripcionModel.create({
-                estado: args.estado,
-                fechaIngreso: args.fechaIngreso,                
+                estado: args.estado,                               
                 proyecto: args.proyecto,
                 estudiante: args.estudiante,
             });
