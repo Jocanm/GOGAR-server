@@ -1,7 +1,7 @@
 import { UserModel } from "./usuario";
 
 
-const resolvers = {
+export const resolversUsuario = {
 
     //SE CREAN LO QUERY PARA TODOS
     Query:{

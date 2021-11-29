@@ -1,6 +1,6 @@
 import { gql } from 'apollo-server-express';
 
-const typeDefs = gql`
+const tiposUsuario = gql`
   scalar Date
 
   enum Enum_EstadoUsuario{
@@ -54,4 +54,4 @@ const typeDefs = gql`
     eliminarUsuario(_id: String, correo: String): Usuario
   }
 `;
-export { typeDefs };
+export { tiposUsuario };
