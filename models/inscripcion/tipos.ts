@@ -19,7 +19,11 @@ export const tiposInscripcion = gql`
             estado: Enum_EstadoInscripcion!                       
             proyecto: String!
             estudiante: String! 
-        ): Inscripcion         
+        ): Inscripcion 
+        
+        aprobarInscripcion(id:String): Inscripcion
     }
+
+    
 
     ;`
