@@ -1,6 +1,6 @@
 import express from "express";
-import cors from 'cors'
-import dotenv from 'dotenv'
+import cors from 'cors';
+import dotenv from 'dotenv';
 import conexionBD from "./db/db";
 import { ApolloServer } from 'apollo-server-express'
 import { resolvers } from "./graphql/resolvers";

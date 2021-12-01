@@ -1,5 +1,6 @@
 import {gql} from 'apollo-server-express'
 import { tiposEnums } from '../models/enums/tipos';
+import { tiposAvance } from '../models/avance/tipos';
 
 const tiposGlobales = gql`
 
@@ -7,4 +8,4 @@ const tiposGlobales = gql`
 
 `;
 
-export const tipos = [tiposGlobales,tiposEnums]
+export const tipos = [tiposGlobales,tiposEnums, tiposAvance]
