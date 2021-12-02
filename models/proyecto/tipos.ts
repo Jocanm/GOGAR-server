@@ -10,7 +10,7 @@ export const tiposProyecto = gql`
         fechaFin:Date!
         estado:Enum_estadoProyecto!
         fase:Enum_faseProyecto!
-        # lider:Usuario!
+        lider:Usuario!
     }
 
     type Query{

@@ -1,20 +1,7 @@
 import { gql } from 'apollo-server-express';
 
 const tiposUsuario = gql`
-  scalar Date
 
-  enum Enum_EstadoUsuario{
-    PENDIENTE
-    AUTORIZADO
-    NO_AUTORIZADO
-  }
-
-  enum Enum_Rol {
-    ESTUDIANTE
-    LIDER
-    ADMINISTRADOR
-  }
-  
   type Usuario {
     _id: ID!
     nombre: String!
@@ -22,7 +9,7 @@ const tiposUsuario = gql`
     identificacion: String!
     correo: String!
     rol: Enum_Rol!
-    estado: Enum_EstadoUsuario
+    estado: Enum_estadoUsuario
   }
 
   
@@ -37,7 +24,7 @@ const tiposUsuario = gql`
       apellido: String!
       identificacion: String!
       correo: String!
-      estado: Enum_EstadoUsuario
+      estado: Enum_estadoUsuario
       rol: Enum_Rol!
     ):Usuario
 
@@ -47,7 +34,7 @@ const tiposUsuario = gql`
       apellido: String!
       identificacion: String!
       correo: String!
-      estado: Enum_EstadoUsuario
+      estado: Enum_estadoUsuario
       rol: Enum_Rol!
     ):Usuario
 

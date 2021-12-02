@@ -6,11 +6,11 @@ type Avance {
     descripcion: String!
     observaciones: [String]
     proyecto: Proyecto!
-    creadoPor: User!
+    creadoPor: Usuario!
 }
 
 type Query{
-    Avances: [Avence]
+    Avances: [Avance]
 }
 
 type Mutation{
