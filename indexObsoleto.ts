@@ -1,6 +1,6 @@
 import conexionBD from "./db/db";
 import { Enum_EstadoUsuario, Enum_Rol, Enum_tipoObjetivo, Enum_estadoProyecto, Enum_faseProyecto,Enum_EstadoInscripcion } from "./models/enums/enum";
-import { ObjetivoModel } from "./models/objetivo/objective";
+import { ObjetivoModel } from "./models/objetivo/objectivo";
 import { ProyectoModel } from "./models/proyecto/proyecto";
 import { UserModel } from "./models/usuario/usuario";
 import { InscripcionModel } from './models/inscripcion/inscripcion'
