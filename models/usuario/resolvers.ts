@@ -1,11 +1,21 @@
+import { Enum_Rol } from "../enums/enums";
 import { UserModel } from "./user";
 
 export const resolverUsuario = {
 
     Query:{
-        Usuarios: async (parent,args) =>{
-            const usuarios = await UserModel.find().populate("inscripciones")
-            return usuarios;
+        Usuarios: async (parent,args,context) =>{
+            // const usuarios = await UserModel.find().populate("inscripciones")
+            // return usuarios;
+            if(context.userData.rol === "ADMINISTRADOR"){
+                return await UserModel.find().populate("inscripciones")
+            }
+            if(context.userData.rol === "LIDER"){
+                return await UserModel.find({
+                    rol:Enum_Rol.ESTUDIANTE
+                }).populate("inscripciones")
+            }
+            return []
         },
         Usuario: async (parent,args) => {
             const usuario = await UserModel.findOne({_id:args._id}).populate("inscripciones")

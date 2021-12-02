@@ -23,7 +23,7 @@ export const tiposAutenticacion = gql`
             password:String!
         ): Token!
 
-        ValidarToken:Token
+        RefrescarToken:Token
     }
 
 `;
