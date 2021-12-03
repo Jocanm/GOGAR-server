@@ -25,11 +25,9 @@ const proyectoSchema = new Schema<Proyecto>(
         },
         fechaInicio: {
             type: Date,
-            required: true
         },
         fechaFin: {
             type: Date,
-            required: true
         },
         estado: {
             type: String,
@@ -46,7 +44,23 @@ const proyectoSchema = new Schema<Proyecto>(
             required: true,
             ref: UserModel
         }
+    },
+    {
+        toJSON: { virtuals: true },
+        toObject: { virtuals: true }
     }
 )
+
+proyectoSchema.virtual("avances", {
+    ref: "Avance",
+    localField: "_id",
+    foreignField: "proyecto"
+})
+
+proyectoSchema.virtual("objetivos",{
+    ref:"Objetive",
+    localField:"_id",
+    foreignField:"proyecto"
+})
 
 export const ProyectoModel = model('Proyecto', proyectoSchema, "proyectos");
