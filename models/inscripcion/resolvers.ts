@@ -4,7 +4,7 @@ import { InscripcionModel } from "./inscripcion";
 export const resolverInscripciones = {
   Query: {
     Inscripciones: async (parent, args) => {
-      const inscripciones = await InscripcionModel.find();
+      const inscripciones = await InscripcionModel.find().populate("estudiante").populate("proyecto");
       return inscripciones;
       }
     },
