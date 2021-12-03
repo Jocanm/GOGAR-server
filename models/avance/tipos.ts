@@ -1,6 +1,6 @@
 import {gql} from 'apollo-server-express';
 
-const tiposAvance = gql`
+export const tiposAvance = gql`
 type Avance {
     fecha:Date!
     descripcion: String!
@@ -23,4 +23,4 @@ type Mutation{
 }
 `;
 
-export {tiposAvance};
+// export {tiposAvance};

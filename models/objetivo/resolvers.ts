@@ -4,13 +4,14 @@ import { ObjetiveModel } from './objetivo'
 export const resolverObjetivo = {
 
     Query:{
-        Objetivos: async(parent,args)=>{
-            const objetivos= await ObjetiveModel.find().populate("proyecto")
+        Objetivos: async(parent,args) =>{
+            const objetivos = await ObjetiveModel.find().populate("proyecto")
             return objetivos
         },
         Objetivo: async (parent,args)=>{
         const objetivo= await ObjetiveModel.findOne({_id:args._id}).populate("proyecto")
         return objetivo
+        }
     },
     Mutation:{
         crearObjetivo: async(parent,args) =>{
@@ -22,25 +23,6 @@ export const resolverObjetivo = {
             return objetivo
         }
     }
-
-
-
-
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
 

@@ -1,7 +1,7 @@
 import { AvancesModel } from "./avances";
 
 
-const resolversAvance = {
+export const resolversAvance = {
     Query:{
         Avances: async(parent, args) => {
             const avances = await AvancesModel.find();
@@ -21,4 +21,4 @@ const resolversAvance = {
     },
 };
 
-export {resolversAvance};   
+// export {resolversAvance};   

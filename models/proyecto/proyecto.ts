@@ -1,6 +1,5 @@
 import { Schema, model } from "mongoose";
 import { Enum_estadoProyecto, Enum_faseProyecto } from "../enums/enum";
-import { InscripcionModel } from "../inscripcion/inscripcion";
 import { UserModel } from '../usuario/usuario'
 
 
