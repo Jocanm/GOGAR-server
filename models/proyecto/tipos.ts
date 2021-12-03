@@ -25,10 +25,6 @@ export const tiposProyecto = gql`
         crearProyecto(
             nombre:String!
             presupuesto:Float!
-            fechaInicio:Date!
-            fechaFin:Date!
-            estado:Enum_estadoProyecto
-            fase:Enum_faseProyecto
             lider:String!
         ):Proyecto
     }
