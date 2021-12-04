@@ -26,6 +26,23 @@ export const tiposProyecto = gql`
             presupuesto:Float!
             lider:String!
         ):Proyecto
+
+        aprobarProyecto(
+            _id:String!
+        ):Proyecto
+
+        inactivarProyecto(
+            _id:String!
+        ):Proyecto
+
+        actualizarProyecto(
+            _id:String!
+            nombre:String!
+        ):Proyecto
+
+        terminarProyecto(
+            _id:String!
+        ):Proyecto
     }
 
 `

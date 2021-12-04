@@ -4,7 +4,7 @@ export enum Enum_estadoProyecto {
 }
 
 export enum Enum_faseProyecto {
-  INCIADO = "INCIADO",
+  INICIADO = "INICIADO",
   DESARROLLO = "DESARROLLO",
   TERMINADO = "TERMINADO",
   NULA = "NULA"

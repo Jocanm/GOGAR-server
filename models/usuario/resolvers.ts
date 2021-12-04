@@ -3,7 +3,6 @@ import { UserModel } from "./usuario";
 
 export const resolversUsuario = {
 
-    //SE CREAN LO QUERY PARA TODOS
     Query: {
         Usuarios: async (parent, arg) => {
             const usuarios = await UserModel.find();
@@ -15,7 +14,6 @@ export const resolversUsuario = {
         },
     },
 
-    //SE CREAN LAS MUTACIONES
     Mutation: {
         crearUsuario: async (parent, args) => {
             const usuariocreado = await UserModel.create({
@@ -25,13 +23,7 @@ export const resolversUsuario = {
                 correo: args.correo,
                 rol: args.rol,
             });
-
-            if (Object.keys(args).includes('estado')) {
-                usuariocreado.estado = args.estado;
-            }
             return usuariocreado;
-
-            console.log('Ejecuentado la mutacion')
         },
 
         editarUsuario: async (parent, args) => {
@@ -40,8 +32,7 @@ export const resolversUsuario = {
                 apellido: args.apellido,
                 identificacion: args.identificacion,
                 correo: args.correo,
-                rol: args.rol,
-                estado: args.estado,
+                estado:args.estado
             },{new:true});
             return usuarioEditado;
         },
