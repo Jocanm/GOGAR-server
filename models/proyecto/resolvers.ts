@@ -50,6 +50,10 @@ export const resolversProyecto = {
             return await ProyectoModel.findByIdAndUpdate(args._id,{
                 estado:Enum_estadoProyecto.INACTIVO
             },{new:true})
+        },
+        terminarProyecto: async(parent,args) => {
+            
         }
+
     }
 }
