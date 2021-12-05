@@ -17,5 +17,11 @@ export const tiposObjetivo = gql`
             tipo:Enum_tipoObjetivo!
             proyecto:String!
         ):Objetivo
+
+        actualizarObjetivo(
+            _id:String!
+            descripcion:String!
+            tipo:Enum_tipoObjetivo!
+        ):Objetivo
     }
 `;

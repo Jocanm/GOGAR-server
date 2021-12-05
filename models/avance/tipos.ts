@@ -5,7 +5,7 @@ type Avance {
     _id:ID!
     fecha:Date!
     descripcion: String!
-    observaciones: [String]
+    observaciones: [String]!
     proyecto: Proyecto!
     creadoPor: Usuario!
 }
@@ -13,19 +13,23 @@ type Avance {
 type Query{
     Avances: [Avance]
     Avance(_id:String!):Avance
-    filtrarAvances(
-        idProyecto:String!
-    ):[Avance]
 }
 
 type Mutation{
     crearAvance(
-        fecha:Date!
         descripcion: String!
         proyecto: String!
         creadoPor: String!
     ): Avance
+
+    observacionesAvance(
+        _id:String!
+        observaciones:[String]!
+    ):Avance
+
+    editarAvance(
+        _id:String!
+        descripcion:String!
+    ): Avance
 }
 `;
-
-// export {tiposAvance};

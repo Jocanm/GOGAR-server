@@ -9,7 +9,8 @@ const tiposUsuario = gql`
     identificacion: String!
     correo: String!
     rol: Enum_Rol!
-    estado: Enum_estadoUsuario
+    estado: Enum_estadoUsuario!
+    misProyectos:[Proyecto]!
   }
 
   
@@ -24,7 +25,6 @@ const tiposUsuario = gql`
       apellido: String!
       identificacion: String!
       correo: String!
-      estado: Enum_estadoUsuario
       rol: Enum_Rol!
     ):Usuario
 
@@ -34,7 +34,7 @@ const tiposUsuario = gql`
       apellido: String!
       identificacion: String!
       correo: String!
-      estado:Enum_estadoUsuario
+      estado:Enum_estadoUsuario!
     ):Usuario
 
     eliminarUsuario(_id: String, correo: String): Usuario

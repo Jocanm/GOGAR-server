@@ -6,29 +6,28 @@ export const resolverInscripciones = {
     Inscripciones: async (parent, args) => {
       const inscripciones = await InscripcionModel.find().populate("estudiante").populate("proyecto");
       return inscripciones;
-      }
-    },
+    }
+  },
 
-    Mutation: {
-      crearInscripcion: async (parents, args) => {
-        const inscripcion = await InscripcionModel.create({
-          estado: args.estado,
-          proyecto: args.proyecto,
-          estudiante: args.estudiante,
-        });
-        return inscripcion;
-      },
-      aprobarInscripcion: async (parent, args) => {
-        const inscripcionAprobada = await InscripcionModel.findByIdAndUpdate(
-          args.id,
-          {
-            estado: Enum_EstadoInscripcion.ACEPTADA,
-            fechaIngreso: new Date(Date.now()),
-          },
-          { new: true }
-        );
-        return inscripcionAprobada;
-
-      },
+  Mutation: {
+    crearInscripcion: async (parents, args) => {
+      const inscripcion = await InscripcionModel.create({
+        proyecto: args.proyecto,
+        estudiante: args.estudiante,
+      });
+      return inscripcion;
     },
-  };
+    aprobarInscripcion: async (parent, args) => {
+      const inscripcionAprobada = await InscripcionModel.findByIdAndUpdate(
+        args.id,
+        {
+          estado: Enum_EstadoInscripcion.ACEPTADA,
+          fechaIngreso: new Date(Date.now()),
+        },
+        { new: true }
+      );
+      return inscripcionAprobada;
+
+    },
+  },
+};

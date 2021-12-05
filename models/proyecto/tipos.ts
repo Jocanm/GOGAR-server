@@ -13,6 +13,7 @@ export const tiposProyecto = gql`
         lider:Usuario!
         avances:[Avance]
         objetivos:[Objetivo]
+        inscripciones:[Inscripcion]
     }
 
     type Query{
@@ -38,6 +39,7 @@ export const tiposProyecto = gql`
         actualizarProyecto(
             _id:String!
             nombre:String!
+            presupuesto:Float!
         ):Proyecto
 
         terminarProyecto(

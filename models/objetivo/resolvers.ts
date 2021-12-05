@@ -21,6 +21,12 @@ export const resolverObjetivo = {
                 proyecto:args.proyecto
             })
             return objetivo
+        },
+        actualizarObjetivo: async(parent,args) => {
+            return await ObjetiveModel.findByIdAndUpdate(args._id,{
+                descripcion:args.descripcion,
+                tipo:args.tipo
+            },{new:true})
         }
     }
 }

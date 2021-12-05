@@ -5,11 +5,11 @@ export const resolversUsuario = {
 
     Query: {
         Usuarios: async (parent, arg) => {
-            const usuarios = await UserModel.find();
+            const usuarios = await UserModel.find().populate("misProyectos");
             return usuarios;
         },
         Usuario: async (parent, args) => {
-            const usuario = await UserModel.findOne({ _id: args._id });
+            const usuario = await UserModel.findOne({ _id: args._id }).populate("misProyectos");
             return usuario;
         },
     },

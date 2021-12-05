@@ -5,11 +5,11 @@ import { ProyectoModel } from "./proyecto"
 export const resolversProyecto = {
     Query:{
         Proyectos: async (parent,args) => {
-            const proyectos = await ProyectoModel.find().populate("lider").populate("avances").populate("objetivos")
+            const proyectos = await ProyectoModel.find().populate("lider").populate("avances").populate("objetivos").populate("inscripciones")
             return proyectos;
         },
         Proyecto: async(parent,args) =>{
-            const proyecto = await ProyectoModel.findOne({_id:args._id}).populate("lider").populate("avances").populate("objetivos")
+            const proyecto = await ProyectoModel.findOne({_id:args._id}).populate("lider").populate("avances").populate("objetivos").populate("inscripciones")
             return proyecto;
         }
     },
@@ -52,7 +52,17 @@ export const resolversProyecto = {
             },{new:true})
         },
         terminarProyecto: async(parent,args) => {
-            
+            return await ProyectoModel.findByIdAndUpdate(args._id,{
+                fase:Enum_faseProyecto.TERMINADO,
+                estado:Enum_estadoProyecto.INACTIVO,
+                fechaFin:new Date(Date.now())
+            },{new:true})
+        },
+        actualizarProyecto: async(parent,args) => {
+            return await ProyectoModel.findByIdAndUpdate(args._id,{
+                nombre:args.nombre,
+                presupuesto:args.presupuesto
+            },{new:true})
         }
 
     }
