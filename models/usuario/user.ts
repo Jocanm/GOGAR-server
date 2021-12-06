@@ -66,6 +66,12 @@ userSchema.virtual("inscripciones", {
     foreignField: "estudiante"
 })
 
+userSchema.virtual("projectosLiderados",{
+    ref:"Proyecto",
+    localField: "_id",
+    foreignField: "lider"
+})
+
 //Como tercer parametro podemos agregarle el nombre de la colección donde queremos que se creen o se editen nuestros usuarios
 export const UserModel = model("User",userSchema)
 
