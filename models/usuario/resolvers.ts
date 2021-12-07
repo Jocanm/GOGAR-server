@@ -5,7 +5,15 @@ export const resolverUsuario = {
 
     Query:{
         Usuarios: async (parent,args,context) =>{
-            const usuarios = await UserModel.find().populate("inscripciones").populate("projectosLiderados")
+            const usuarios = await UserModel.find().populate([
+                {
+                    path:"inscripciones"
+                },
+                {
+                    path:"projectosLiderados",
+                    populate:"objetivos"
+                }
+            ]);
             return usuarios;
             // if(context.userData.rol === "ADMINISTRADOR"){
             //     return await UserModel.find().populate("inscripciones")
@@ -18,7 +26,15 @@ export const resolverUsuario = {
             // return []
         },
         Usuario: async (parent,args) => {
-            const usuario = await UserModel.findOne({_id:args._id}).populate("inscripciones").populate("projectosLiderados")
+            const usuario = await UserModel.findOne({_id:args._id}).populate([
+                {
+                    path:"inscripciones"
+                },
+                {
+                    path:"projectosLiderados",
+                    populate:"objetivos"
+                }
+            ]);
             return usuario;
         }
     },

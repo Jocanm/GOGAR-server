@@ -12,6 +12,7 @@ export const tiposUsuario = gql`
         estado:Enum_estadoUsuario!
         rol:Enum_Rol!
         inscripciones:[Inscripcion]
+        projectosLiderados:[Proyecto]
     }
 
     type Query{
