@@ -1,17 +1,18 @@
 import { Enum_Rol } from "../enums/enums";
 import { UserModel } from "./user";
+import bcrypt from 'bcrypt'
 
 export const resolverUsuario = {
 
-    Query:{
-        Usuarios: async (parent,args,context) =>{
+    Query: {
+        Usuarios: async (parent, args, context) => {
             const usuarios = await UserModel.find().populate([
                 {
-                    path:"inscripciones"
+                    path: "inscripciones"
                 },
                 {
-                    path:"projectosLiderados",
-                    populate:"objetivos"
+                    path: "projectosLiderados",
+                    populate: [{ path: "objetivos" }, { path: "lider" }]
                 }
             ]);
             return usuarios;
@@ -25,63 +26,82 @@ export const resolverUsuario = {
             // }
             // return []
         },
-        Usuario: async (parent,args) => {
-            const usuario = await UserModel.findOne({_id:args._id}).populate([
+        Usuario: async (parent, args) => {
+            const usuario = await UserModel.findOne({ _id: args._id }).populate([
                 {
-                    path:"inscripciones"
+                    path: "inscripciones"
                 },
                 {
-                    path:"projectosLiderados",
-                    populate:"objetivos"
+                    path: "projectosLiderados",
+                    populate: [{ path: "objetivos" }, { path: "lider" }]
                 }
             ]);
             return usuario;
         }
     },
-    Mutation:{
-        crearUsuario: async(parent,args) =>{
+    Mutation: {
+        crearUsuario: async (parent, args) => {
 
             const usuarioCreado = await UserModel.create({
-                nombre:args.nombre,
-                apellido:args.apellido,
-                identificacion:args.identificacion,
-                correo:args.correo,
-                rol:args.rol
+                nombre: args.nombre,
+                apellido: args.apellido,
+                identificacion: args.identificacion,
+                correo: args.correo,
+                rol: args.rol
             })
 
-            if(Object.keys(args).includes('estado')){
+            if (Object.keys(args).includes('estado')) {
                 usuarioCreado.estado = args.estado
             }
 
             return usuarioCreado;
         },
-        eliminarUsuario: async(parent,args) => {
-            
-            if(Object.keys(args).includes("_id")){
+        eliminarUsuario: async (parent, args) => {
+
+            if (Object.keys(args).includes("_id")) {
                 const usuarioEliminado = await UserModel.findOneAndDelete({
-                    _id:args._id
+                    _id: args._id
                 })
                 return usuarioEliminado;
             }
-            else{
+            else {
                 const usuarioEliminado = await UserModel.findOneAndDelete({
-                    correo:args.correo
+                    correo: args.correo
                 })
                 return usuarioEliminado;
             }
         },
-        editarUsuario: async(parent,args) => {
+        editarUsuario: async (parent, args) => {
 
-            const usuarioEditado = await UserModel.findByIdAndUpdate(args._id,{
-                nombre:args.nombre,
-                apellido:args.apellido,
-                identificacion:args.identificacion,
-                correo:args.correo,
-                rol:args.rol,
-                estado:args.estado
-            },{new:true})
+            if (args.password) {
+                const salt = await bcrypt.genSalt(10);
+                const hashedPassword = await bcrypt.hash(args.password, salt)
 
-            return usuarioEditado;
+                const usuarioEditado = await UserModel.findByIdAndUpdate(args._id, {
+                    nombre: args.nombre,
+                    apellido: args.apellido,
+                    identificacion: args.identificacion,
+                    correo: args.correo,
+                    rol: args.rol,
+                    estado: args.estado,
+                    password: hashedPassword
+                }, { new: true })
+
+                return usuarioEditado;
+            }
+
+            else {
+                const usuarioEditado = await UserModel.findByIdAndUpdate(args._id, {
+                    nombre: args.nombre,
+                    apellido: args.apellido,
+                    identificacion: args.identificacion,
+                    correo: args.correo,
+                    rol: args.rol,
+                    estado: args.estado,
+                }, { new: true })
+
+                return usuarioEditado;
+            }
 
         }
     }

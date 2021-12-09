@@ -26,7 +26,8 @@ export const resolversAutenticacion = {
                     identificacion: usuario.identificacion,
                     correo: usuario.correo,
                     rol: usuario.rol,
-                    estado:usuario.estado
+                    estado:usuario.estado,
+                    password:usuario.password
                 })
             }
         },
@@ -52,7 +53,8 @@ export const resolversAutenticacion = {
                         identificacion: usuario.identificacion,
                         correo: usuario.correo,
                         rol: usuario.rol,
-                        estado:usuario.estado
+                        estado:usuario.estado,
+                        password:usuario.password
                     })
                 }
             }
@@ -81,7 +83,8 @@ export const resolversAutenticacion = {
                         identificacion: context.userData.identificacion,
                         correo: context.userData.correo,
                         rol: context.userData.rol,
-                        estado:context.userData.estado
+                        estado:context.userData.estado,
+                        password:context.userData.password
                     })
                 }
             }

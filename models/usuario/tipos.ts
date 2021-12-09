@@ -11,6 +11,7 @@ export const tiposUsuario = gql`
         correo:String!
         estado:Enum_estadoUsuario!
         rol:Enum_Rol!
+        password:String!
         inscripciones:[Inscripcion]
         projectosLiderados:[Proyecto]
     }
@@ -42,6 +43,7 @@ export const tiposUsuario = gql`
             identificacion:String!
             correo:String!
             estado:Enum_estadoUsuario!
+            password:String
         ):Usuario
     }
 `;
