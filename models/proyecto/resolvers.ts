@@ -13,7 +13,16 @@ export const resolversProyecto = {
             })
         },
         Proyecto: async (parent, args) => {
-            const proyecto = await ProjectModel.findOne({ _id: args._id }).populate("lider").populate("avances").populate("objetivos").populate("inscripciones")
+            const proyecto = await ProjectModel.findById(args._id).populate("lider").populate("objetivos").populate([
+                {
+                    path:"inscripciones",
+                    populate:[{path:"estudiante"}]
+                },
+                {
+                    path:"avances",
+                    populate:[{path:"creadoPor"}]
+                }
+            ])
             return proyecto
         }
     },

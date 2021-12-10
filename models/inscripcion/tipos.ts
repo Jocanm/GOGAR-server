@@ -13,7 +13,10 @@ export const tiposInscripcion = gql`
 
     type Query{
         Inscripciones:[Inscripcion]
-        Inscripcion(_id:String!):Inscripcion
+        Inscripcion(
+            estudiante:String!
+            proyecto:String!
+        ):Inscripcion
         inscripcionesEstudiante(_id:String!):[Inscripcion]
     }
 
