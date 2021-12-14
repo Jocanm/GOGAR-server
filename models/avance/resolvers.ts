@@ -23,12 +23,26 @@ export const resolversAvance = {
         crearAvance: async(parent,args) => {
 
             const avance = await AvanceModel.create({
-                fecha:args.fecha,
+                fecha:new Date(Date.now()),
                 descripcion:args.descripcion,
                 proyecto:args.proyecto,
                 creadoPor:args.creadoPor
             })
             return avance;
+        },
+        editarAvance: async(parent, args) => {
+
+            if(args.observaciones){
+                const avance = await AvanceModel.findByIdAndUpdate(args._id,{
+                    observaciones:args.observaciones
+                },{new:true})
+                return avance
+            }else{
+                const avance = await AvanceModel.findByIdAndUpdate(args._id,{
+                    descripcion:args.descripcion
+                },{ new: true})
+                return avance
+            }
         }
     }
 
